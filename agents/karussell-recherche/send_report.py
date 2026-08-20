@@ -1,4 +1,10 @@
-"""Formatiert analysis_result.json als Telegram-Nachricht(en) und verschickt sie.
+"""Formatiert analysis_result.json (rohe Zitate aus dem aktuellen automatischen Lauf) \
+als Telegram-Nachricht(en) und verschickt sie.
+
+Läuft unbeaufsichtigt in GitHub Actions, deshalb bewusst zustandslos (kein Zugriff auf \
+das lokale Fragen-Archiv). Die Destillation zu 'brennenden Fragen' (fragen_archiv.json, \
+distill_questions.py) passiert separat, gemeinsam und interaktiv mit Claude - dort ist \
+der Wortlaut-Feinschliff wichtiger als Automatisierung.
 
 Teilt automatisch in mehrere Nachrichten auf, falls das Telegram-Limit (4096 Zeichen) \
 überschritten wird.
