@@ -1,0 +1,38 @@
+name: Karussell-Recherche
+
+on:
+  schedule:
+    # 10:00 Europe/Berlin ≈ 08:00 UTC (weicht während der Winterzeit/CET um 1h ab)
+    - cron: "0 8 * * 1"
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r agents/karussell-recherche/requirements.txt
+
+      - name: Sammle YouTube-Kommentare
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: python agents/karussell-recherche/collect_youtube.py
+
+      - name: Analysiere mit Claude
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python agents/karussell-recherche/analyze.py
+
+      - name: Sende Report an Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python agents/karussell-recherche/send_report.py
