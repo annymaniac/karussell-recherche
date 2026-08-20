@@ -5,3 +5,5 @@ __pycache__/
 .DS_Store
 agents/karussell-recherche/raw_comments.json
 agents/karussell-recherche/analysis_result.md
+agents/karussell-recherche/analysis_result.json
+agents/karussell-recherche/research_memory.json
