@@ -31,6 +31,11 @@ oder Caption-Zeile nutzbar wären.
 
 NICHT als Kriterium: Like-Anzahl/Popularität.
 
+AUSSCHLUSS (harter Filter, unabhängig von Musterrelevanz): Kommentare mit klinischen Diagnosen \
+(z.B. Depression, Angststörung, ADHS, Trauma-Diagnose), Medikamenten, Suizidalität, Selbstverletzung \
+oder akuter psychischer Krise werden NIE ausgewählt - auch wenn sie das Muster sonst gut treffen. \
+Nur alltägliche Verhaltensmuster (z.B. Prokrastination, Zögern, sich nicht melden/trauen) zählen.
+
 Dir werden ggf. bereits in früheren Läufen verwendete Zitate/Themen mitgegeben - schlage diese \
 NICHT nochmal vor, auch nicht in leicht abgewandelter Form. Wenn ein neuer Kommentar inhaltlich \
 dasselbe sagt wie ein bereits verwendetes Zitat, zählt er nicht als neuer Treffer.
