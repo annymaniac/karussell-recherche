@@ -2,6 +2,7 @@
 import json
 import os
 import sys
+from datetime import date
 
 from dotenv import load_dotenv
 from googleapiclient.discovery import build
@@ -11,11 +12,31 @@ load_dotenv()
 API_KEY = os.environ["YOUTUBE_API_KEY"]
 youtube = build("youtube", "v3", developerKey=API_KEY)
 
-SEARCH_TERMS = [
+# Größerer Begriffs-Pool, damit YouTube nicht jede Woche dieselben Top-Videos/-Kommentare
+# zurückgibt. Pro Lauf werden TERMS_PER_RUN Begriffe rotierend ausgewählt (Kalenderwoche als
+# Index) - kein zusätzlicher Zustand nötig, einfach reproduzierbar.
+SEARCH_TERMS_POOL = [
     "Selbstsabotage überwinden",
     "innere Blockaden lösen",
     "Selbstwert stärken Frauen",
+    "warum tue ich nicht was ich weiß",
+    "Muster durchbrechen",
+    "Prokrastination Ursache",
+    "unbewusste Blockaden auflösen",
+    "Perfektionismus überwinden Frauen",
+    "Grübeln stoppen",
 ]
+TERMS_PER_RUN = 3
+
+
+def select_search_terms(today=None):
+    today = today or date.today()
+    week = today.isocalendar()[1]
+    start = (week * TERMS_PER_RUN) % len(SEARCH_TERMS_POOL)
+    return [SEARCH_TERMS_POOL[(start + i) % len(SEARCH_TERMS_POOL)] for i in range(TERMS_PER_RUN)]
+
+
+SEARCH_TERMS = select_search_terms()
 
 
 def collect_for_term(query, max_videos=3, max_comments_per_video=15):

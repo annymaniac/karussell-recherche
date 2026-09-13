@@ -21,6 +21,14 @@ jobs:
       - name: Install dependencies
         run: pip install -r agents/karussell-recherche/requirements.txt
 
+      - name: Research Memory wiederherstellen
+        uses: actions/cache@v4
+        with:
+          path: agents/karussell-recherche/research_memory.json
+          key: research-memory-${{ github.run_id }}
+          restore-keys: |
+            research-memory-
+
       - name: Sammle YouTube-Kommentare
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
