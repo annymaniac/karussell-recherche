@@ -30,6 +30,12 @@ Die Frage muss:
 - Direkt aus dem Zitat ableitbar sein, nichts dazuerfinden
 - Das Muster treffen: "ich weiß, was ich tun müsste - und tue es trotzdem nicht"
 - Kurz und zitierfähig sein, wie eine Frage, die man als Hook nutzen könnte
+- Von der konkreten Lebenssituation der Quelle gelöst sein: Anna-Marias Zielgruppe sind \
+leistungsfähige, reflektierte Frauen ca. 30-55, oft beruflich/unternehmerisch aktiv - NICHT \
+Schüler, Teenager oder die spezifische Situation aus dem Originalzitat (z.B. Schule, \
+Führerschein). Destilliere nur die dahinterliegende Spannung/das Muster, nicht den Anlass. \
+Vermeide auch Wortwahl, die stark an den ursprünglichen Kontext erinnert (z.B. "sich melden" \
+wirkt schnell wie Klassenzimmer) - wähle neutrale, alltagsnahe Formulierungen.
 
 Gib für jedes Zitat ein Objekt zurück. Schließe deine Antwort IMMER mit einem \
 JSON-Codeblock ab, exakt in diesem Format:
